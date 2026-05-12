@@ -18,37 +18,37 @@ https://fit-mind-ai-backend.vercel.app
 
 ## 🏠 Home Page
 
-![Home](./frontend/public/screenshots/home.png)
+![Home](./screenshots/home.png)
 
 ---
 
 ## 🔐 Login Page
 
-![Login](./frontend/public/screenshots/login.png)
+![Login](./screenshots/login.png)
 
 ---
 
 ## 📊 Dashboard
 
-![Dashboard](./frontend/public/screenshots/dashboard.png)
+![Dashboard](./screenshots/dashboard.png)
 
 ---
 
 ## 🤖 AI Workout Plan
 
-![AI Plan](./frontend/public/screenshots/ai-plan.png)
+![AI Plan](./screenshots/ai-plan.png)
 
 ---
 
 ## 💬 AI Trainer Chat
 
-![Chat](./frontend/public/screenshots/chat.png)
+![Chat](./screenshots/chat.png)
 
 ---
 
 ## 📈 Progress Analytics
 
-![Analytics](./frontend/public/screenshots/analytics.png)
+![Analytics](./screenshots/analytics.png)
 
 ---
 
