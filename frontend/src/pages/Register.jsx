@@ -7,6 +7,8 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  const [success, setSuccess] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,9 +32,15 @@ const Register = () => {
 
       await registerUser(formData);
 
-      alert("Registration Successful");
+      setSuccess(
+        "Registration Successful! Redirecting..."
+      );
 
-      navigate("/login");
+      setTimeout(() => {
+
+        navigate("/login");
+
+      }, 1500);
 
     } catch (error) {
 
@@ -53,6 +61,16 @@ const Register = () => {
         <h1 className="text-3xl font-bold mb-6 text-center">
           Register
         </h1>
+
+        {success && (
+
+          <div className="bg-green-100 text-green-700 p-3 rounded-lg mb-4 text-center">
+
+            {success}
+
+          </div>
+
+        )}
 
         <input
           type="text"
@@ -79,7 +97,9 @@ const Register = () => {
         />
 
         <button className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition">
+
           Register
+
         </button>
 
         <p className="mt-4 text-center">
