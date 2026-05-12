@@ -28,6 +28,29 @@ const Register = () => {
 
     e.preventDefault();
 
+    // validation
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.password
+    ) {
+
+      alert("Please fill all fields");
+
+      return;
+
+    }
+
+    if (formData.password.length < 6) {
+
+      alert(
+        "Password must be at least 6 characters"
+      );
+
+      return;
+
+    }
+
     try {
 
       await registerUser(formData);
@@ -77,6 +100,7 @@ const Register = () => {
           name="name"
           placeholder="Name"
           onChange={handleChange}
+          required
           className="w-full p-3 border rounded-lg mb-4"
         />
 
@@ -85,6 +109,7 @@ const Register = () => {
           name="email"
           placeholder="Email"
           onChange={handleChange}
+          required
           className="w-full p-3 border rounded-lg mb-4"
         />
 
@@ -93,6 +118,8 @@ const Register = () => {
           name="password"
           placeholder="Password"
           onChange={handleChange}
+          required
+          minLength={6}
           className="w-full p-3 border rounded-lg mb-4"
         />
 
