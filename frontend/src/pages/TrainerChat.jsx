@@ -61,7 +61,7 @@ const TrainerChat = () => {
       setTyping(true);
 
       await axios.post(
-        "http://localhost:5000/api/chat",
+        "https://fit-mind-ai-tau.vercel.app/api/chat",
         {
           text: message,
         },
