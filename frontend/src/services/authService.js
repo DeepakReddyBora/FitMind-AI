@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/auth";
+const API = "https://fit-mind-ai-backend.vercel.app/api/auth";
 
 export const registerUser = async (userData) => {
   const response = await axios.post(

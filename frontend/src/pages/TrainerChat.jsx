@@ -34,7 +34,7 @@ const TrainerChat = () => {
     try {
 
       const response = await axios.get(
-        "http://localhost:5000/api/chat",
+        "https://fit-mind-ai-backend.vercel.app/api/chat",
         {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/progress";
+const API = "https://fit-mind-ai-backend.vercel.app/api/progress";
 
 export const addProgress = async (
   progressData,
