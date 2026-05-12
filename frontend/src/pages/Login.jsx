@@ -4,7 +4,10 @@ import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../services/authService";
 
 const Login = () => {
+
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -12,32 +15,49 @@ const Login = () => {
   });
 
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     try {
+
+      setLoading(true);
+
       const data = await loginUser(formData);
 
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify(data)
+      );
 
       navigate("/dashboard");
+
     } catch (error) {
+
       alert(error.response.data.message);
+
+      setLoading(false);
+
     }
+
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl shadow-md w-100"
       >
+
         <h1 className="text-3xl font-bold mb-6 text-center">
           Login
         </h1>
@@ -58,17 +78,31 @@ const Login = () => {
           className="w-full p-3 border rounded-lg mb-4"
         />
 
-        <button className="w-full bg-black text-white p-3 rounded-lg">
-          Login
+        <button
+          className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition"
+        >
+
+          {loading
+            ? "Logging in..."
+            : "Login"}
+
         </button>
 
         <p className="mt-4 text-center">
+
           Don’t have an account?
-          <Link to="/register" className="text-blue-500 ml-2">
+
+          <Link
+            to="/register"
+            className="text-blue-500 ml-2"
+          >
             Register
           </Link>
+
         </p>
+
       </form>
+
     </div>
   );
 };
