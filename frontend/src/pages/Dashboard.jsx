@@ -88,8 +88,6 @@ const Dashboard = () => {
         userInfo.token
       );
 
-      alert("Progress Saved");
-
       const updatedProgress = await getProgress(
         userInfo.token
       );
@@ -143,28 +141,28 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
 
       {/* HEADER */}
 
-      <div className="flex justify-between items-center mb-10">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
 
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-3xl md:text-4xl font-bold text-center md:text-left">
           Welcome {userInfo?.name}
         </h1>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
 
           <button
             onClick={() => navigate("/chat")}
-            className="bg-black text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition"
+            className="bg-black text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition w-full"
           >
             AI Trainer Chat
           </button>
 
           <button
             onClick={logoutHandler}
-            className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition"
+            className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition w-full"
           >
             Logout
           </button>
@@ -175,13 +173,13 @@ const Dashboard = () => {
 
       {/* AI PLAN GENERATOR */}
 
-      <div className="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto">
+      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg max-w-3xl mx-auto">
 
-        <h2 className="text-3xl font-bold mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">
           Generate AI Fitness Plan
         </h2>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           <input
             type="number"
@@ -212,6 +210,7 @@ const Dashboard = () => {
             onChange={handleChange}
             className="border p-3 rounded-lg"
           >
+
             <option value="">
               Select Level
             </option>
@@ -236,22 +235,24 @@ const Dashboard = () => {
           onClick={generatePlan}
           className="bg-black text-white px-6 py-3 rounded-lg mt-6 w-full hover:bg-gray-800 transition"
         >
+
           {loading
             ? "Generating..."
             : "Generate Plan"}
+
         </button>
 
       </div>
 
       {/* PROGRESS TRACKER */}
 
-      <div className="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto mt-10">
+      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg max-w-3xl mx-auto mt-10">
 
-        <h2 className="text-3xl font-bold mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">
           Track Daily Progress
         </h2>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
           <input
             type="number"
@@ -293,7 +294,7 @@ const Dashboard = () => {
 
       {/* ANALYTICS CARDS */}
 
-      <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mt-10">
 
         <div className="bg-white p-6 rounded-2xl shadow-lg">
 
@@ -301,7 +302,7 @@ const Dashboard = () => {
             Current Weight
           </h2>
 
-          <p className="text-4xl font-bold">
+          <p className="text-3xl md:text-4xl font-bold">
             {progress.length > 0
               ? `${progress[progress.length - 1].weight} kg`
               : "0 kg"}
@@ -315,7 +316,7 @@ const Dashboard = () => {
             Calories Burned
           </h2>
 
-          <p className="text-4xl font-bold">
+          <p className="text-3xl md:text-4xl font-bold">
             {progress.length > 0
               ? progress[progress.length - 1].calories
               : 0}
@@ -329,7 +330,7 @@ const Dashboard = () => {
             Workout Streak
           </h2>
 
-          <p className="text-4xl font-bold">
+          <p className="text-3xl md:text-4xl font-bold">
             {progress.length} Days
           </p>
 
@@ -339,7 +340,7 @@ const Dashboard = () => {
 
       {/* CHART */}
 
-      <div className="max-w-6xl mx-auto mt-10">
+      <div className="max-w-6xl mx-auto mt-10 overflow-x-auto">
 
         <FitnessChart progress={progress} />
 
@@ -347,15 +348,15 @@ const Dashboard = () => {
 
       {/* PROGRESS HISTORY */}
 
-      <div className="bg-white p-8 rounded-2xl shadow-lg max-w-6xl mx-auto mt-10">
+      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg max-w-6xl mx-auto mt-10">
 
-        <h2 className="text-3xl font-bold mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6">
           Progress History
         </h2>
 
         <div className="overflow-x-auto">
 
-          <table className="w-full border-collapse">
+          <table className="w-full border-collapse min-w-125">
 
             <thead>
 
@@ -414,9 +415,9 @@ const Dashboard = () => {
 
       {aiResponse && (
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg max-w-4xl mx-auto mt-10 whitespace-pre-wrap">
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg max-w-4xl mx-auto mt-10 whitespace-pre-wrap">
 
-          <h2 className="text-3xl font-bold mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">
             Your AI Fitness Plan
           </h2>
 
