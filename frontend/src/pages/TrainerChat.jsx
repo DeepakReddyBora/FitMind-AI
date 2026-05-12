@@ -54,40 +54,53 @@ const TrainerChat = () => {
 
   const sendMessage = async () => {
 
-    if (!message) return;
+  if (!message) return;
 
-    try {
-
-      setTyping(true);
-
-      await axios.post(
-        "https://fit-mind-ai-backend.vercel.app/api/chat",
-        {
-          text: message,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${userInfo.token}`,
-          },
-        }
-      );
-
-      setMessage("");
-
-      await fetchChats();
-
-      setTyping(false);
-
-    } catch (error) {
-
-      console.log(error);
-
-      setTyping(false);
-
-    }
-
+  const userMessage = {
+    sender: "user",
+    text: message,
   };
 
+  // instantly show user message
+  setMessages((prev) => [
+    ...prev,
+    userMessage,
+  ]);
+
+  const currentMessage = message;
+
+  setMessage("");
+
+  setTyping(true);
+
+  try {
+
+    await axios.post(
+      "https://fit-mind-ai-backend.vercel.app/api/chat",
+      {
+        text: currentMessage,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+    );
+
+    // fetch updated chats including AI reply
+    await fetchChats();
+
+    setTyping(false);
+
+  } catch (error) {
+
+    console.log(error);
+
+    setTyping(false);
+
+  }
+
+};
   useEffect(() => {
 
     const loadChats = async () => {
